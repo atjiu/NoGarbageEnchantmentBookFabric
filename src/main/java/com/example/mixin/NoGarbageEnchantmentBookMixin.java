@@ -1,4 +1,4 @@
-package com.tomoya42.mixin;
+package com.example.mixin;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Mixin(TradeOffers.EnchantBookFactory.class)
-public class ExampleMixin {
+public class NoGarbageEnchantmentBookMixin {
     @Inject(at = @At("RETURN"), method = "create", cancellable = true)
     private void init(Entity entity, Random random, CallbackInfoReturnable<TradeOffer> cir) {
         List<Enchantment> list = Registries.ENCHANTMENT.stream().filter(Enchantment::isAvailableForEnchantedBookOffer).collect(Collectors.toList());

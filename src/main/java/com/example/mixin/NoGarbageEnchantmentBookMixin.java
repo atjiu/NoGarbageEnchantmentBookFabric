@@ -1,7 +1,7 @@
 package com.example.mixin;
 
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentLevelEntry;
+import net.minecraft.enchantment.InfoEnchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.ItemStack;
@@ -13,7 +13,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.List;
 import java.util.Random;
 
 @Mixin(targets = "net.minecraft.village.TradeOffers$EnchantBookFactory")
@@ -21,10 +20,9 @@ public class NoGarbageEnchantmentBookMixin {
 
     @Inject(at = @At("RETURN"), method = "create", cancellable = true)
     private void init(Entity entity, Random random, CallbackInfoReturnable<TradeOffer> cir) {
-        List<Enchantment> list = Registry.ENCHANTMENT.stream().filter(Enchantment::isAvailableForEnchantedBookOffer).toList();
-        Enchantment enchantment = list.get(random.nextInt(list.size()));
-        int i = enchantment.getMaxLevel();
-        ItemStack itemStack = EnchantedBookItem.forEnchantment(new EnchantmentLevelEntry(enchantment, i));
+        Enchantment enchantment = Registry.ENCHANTMENT.getRandom(random);
+        int i = enchantment.getMaximumLevel();
+        ItemStack itemStack = EnchantedBookItem.forEnchantment(new InfoEnchantment(enchantment, i));
         int j = 2 + 3 * i;
         if (j > 64) j = 64;
 

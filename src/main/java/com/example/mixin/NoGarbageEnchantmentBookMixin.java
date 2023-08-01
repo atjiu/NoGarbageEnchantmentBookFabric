@@ -29,7 +29,7 @@ public class NoGarbageEnchantmentBookMixin {
         if (j > 64) j = 64;
 
         TradeOffer returnValue = cir.getReturnValue();
-        TradeOffer tradeOffer = new TradeOffer(new ItemStack(Items.EMERALD, j), new ItemStack(Items.BOOK), itemStack, 12, returnValue.getMerchantExperience(), 0.2F);
+        TradeOffer tradeOffer = new TradeOffer(new ItemStack(Items.EMERALD, j), new ItemStack(Items.BOOK), itemStack, 12, returnValue.getTraderExperience(), 0.2F);
         cir.setReturnValue(tradeOffer);
     }
 }

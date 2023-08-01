@@ -9,7 +9,6 @@ import net.minecraft.item.Items;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffer;
-import net.minecraft.village.TradeOffers;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -17,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-@Mixin(TradeOffers.EnchantBookFactory.class)
+@Mixin(targets = "net.minecraft.village.TradeOffers$EnchantBookFactory")
 public class NoGarbageEnchantmentBookMixin {
 
     @Inject(at = @At("RETURN"), method = "create", cancellable = true)

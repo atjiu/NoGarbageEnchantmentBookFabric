@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-@Mixin(targets = "net/minecraft/village/TradeOffers$TypeAwareBuyForOneEmeraldFactory")
+@Mixin(targets = "net/minecraft/village/TradeOffers$EnchantBookFactory")
 public class NoGarbageEnchantmentBookMixin {
 
     @Inject(at = @At("RETURN"), method = "create", cancellable = true)

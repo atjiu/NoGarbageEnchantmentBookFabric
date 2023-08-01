@@ -5,7 +5,7 @@
     "name": "NoGarbageEnchantmentBook",
     "description": "Modify the logic of the first random enchantment book after the village recognition lectern to always be the highest level enchantment and the lowest price",
     "authors": [
-        "Tomoya"
+        "朋也"
     ],
     "contact": {
         "homepage": "https://github.com/atjiu/NoGarbageEnchantmentBookFabric",
@@ -24,7 +24,7 @@
     ],
     "depends": {
         "fabricloader": ">=0.14.21",
-        "minecraft": ">=1.19.2",
+        "minecraft": ">=1.19.3",
         "java": ">=17",
         "fabric-api": "*"
     },
